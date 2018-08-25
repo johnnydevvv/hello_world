@@ -5,7 +5,6 @@ var layoutSheet;
 var layout;
 var layoutvalue;
 var profilevalue;
-var sheet = "Account"
 var objectlist = new Array();
 var values = [];
 var layouts = [];
@@ -63,8 +62,10 @@ function createDoc (){
                   
      //set body for section
      layoutSheet = spreadsheet.setActiveSheet(spreadsheet.getSheetByName(docObject));
-     body.appendParagraph("Click 'New' and select the record type below:\r");
-     body.appendParagraph(recordtype+"\r");
+    if (recordtype=="") {body.appendParagraph("Click 'New'\r");
+                         }
+    else if (recordtype!=="") {body.appendParagraph("Click 'New' and select the record type below:\r\r"+recordtype+"\r");
+                         }
      body.appendParagraph("Check that the fields in the following table are on the create new record form:\r");
      body.appendParagraph("R = Read Only, M = Mandatory, E = Editable\r");
      getCreateFields ();
